@@ -377,7 +377,7 @@ MonoBehaviour:
   steppos: {x: 0, y: 0, z: 0}
   vs: {x: 0, y: 0, z: 0}
   vlong: 0
-  stepspeed: 7
+  stepspeed: 50
 --- !u!212 &654866923
 SpriteRenderer:
   m_ObjectHideFlags: 0
