@@ -378,6 +378,7 @@ MonoBehaviour:
   vs: {x: 0, y: 0, z: 0}
   vlong: 0
   stepspeed: 50
+  shadow: {fileID: 1674932858681240, guid: 99ebfbf113e61e747bba7f1dd31aec3c, type: 2}
 --- !u!212 &654866923
 SpriteRenderer:
   m_ObjectHideFlags: 0

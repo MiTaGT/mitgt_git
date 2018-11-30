@@ -14,6 +14,8 @@ public class PlayerMove : MonoBehaviour {
     public float vlong = 0;
     public float stepspeed = 1;
 
+    public GameObject shadow;
+
     // Use this for initialization
     void Start () {
 		
@@ -83,6 +85,7 @@ public class PlayerMove : MonoBehaviour {
             vlong = vs.magnitude;
             if (vlong > 2)
             {
+                Instantiate(shadow, transform.position, transform.rotation);
                 transform.position += vs.normalized * stepspeed * Time.deltaTime;
             }
             else
