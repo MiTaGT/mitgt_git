@@ -8,22 +8,40 @@ public class PlayerMove : MonoBehaviour {
     public float move = 0;
     public GameObject bullet;
 
-	// Use this for initialization
-	void Start () {
+    public bool stepflag = false;
+    public Vector3 steppos;
+    public Vector3 vs;
+    public float vlong = 0;
+    public float stepspeed = 1;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        //上下左右入力取得
         float mx = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float my = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
-
-        transform.position += new Vector3(mx, my, 0);
+        //移動操作
+        if (!stepflag)
+        {
+            transform.position += new Vector3(mx, my, 0);
+        }
+        //ステップ入力を取った時の処理
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            transform.position += new Vector3(mx * 10, my * 10, 0);
+            if (stepflag == false)
+            {
+                //transform.position + new Vector3(mx * 10, my * 10, 0);
+                steppos = new Vector3(mx, my, 0).normalized;
+                steppos = transform.position + new Vector3(steppos.x * 5, steppos.y * 5, 0);
+                stepflag = true;
+            }
         }
+        //
         if (mx < 0)
         {
             mx = -mx;
@@ -54,6 +72,23 @@ public class PlayerMove : MonoBehaviour {
             transform.position,
             transform.rotation);
         }
+        Step();
 
+    }
+
+    void Step()
+    {
+        if (stepflag) {
+            vs = steppos - transform.position;
+            vlong = vs.magnitude;
+            if (vlong > 2)
+            {
+                transform.position += vs.normalized * stepspeed * Time.deltaTime;
+            }
+            else
+            {
+                stepflag = false;
+            }
+        }
     }
 }

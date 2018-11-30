@@ -373,6 +373,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: 0
   bullet: {fileID: 1156391230185420, guid: b0f126cb3c59a5a42911ed8643316fff, type: 2}
+  stepflag: 0
+  steppos: {x: 0, y: 0, z: 0}
+  vs: {x: 0, y: 0, z: 0}
+  vlong: 0
+  stepspeed: 7
 --- !u!212 &654866923
 SpriteRenderer:
   m_ObjectHideFlags: 0
